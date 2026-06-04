@@ -1,0 +1,24 @@
+Watching for file changes with StatReloader
+System check identified some issues:
+
+WARNINGS:
+?: (staticfiles.W004) The directory 'C:\Users\HP\Desktop\frontend\Legal\legal_project\static' in the STATICFILES_DIRS setting does not exist.
+lawyer.Lawyer: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
+	HINT: Configure the DEFAULT_AUTO_FIELD setting or the LawyerConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
+lawyer.LawyerBooking: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
+	HINT: Configure the DEFAULT_AUTO_FIELD setting or the LawyerConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
+
+System check identified 3 issues (0 silenced).
+[04/Jun/2026 10:11:17] "GET / HTTP/1.1" 200 31194
+Not Found: /favicon.ico
+[04/Jun/2026 10:11:20] "GET /favicon.ico HTTP/1.1" 404 2727
+[04/Jun/2026 10:11:59] "GET /auth/register/ HTTP/1.1" 200 4377
+[04/Jun/2026 10:12:01] "GET /auth/login/ HTTP/1.1" 200 3965
+[04/Jun/2026 10:12:03] "GET / HTTP/1.1" 200 31194
+[04/Jun/2026 10:12:08] "GET /admin-dashboard/login/ HTTP/1.1" 200 3849
+[04/Jun/2026 10:12:11] "GET /admin-dashboard/register/ HTTP/1.1" 200 4136
+[04/Jun/2026 10:12:14] "GET /admin-dashboard/login/ HTTP/1.1" 200 3849
+[04/Jun/2026 10:12:16] "GET / HTTP/1.1" 200 31194
+[04/Jun/2026 10:12:18] "GET /lawyer/ HTTP/1.1" 200 4844
+[04/Jun/2026 10:12:21] "GET /lawyer/create/ HTTP/1.1" 200 5930
+[04/Jun/2026 10:12:24] "GET /lawyer/ HTTP/1.1" 200 4844
