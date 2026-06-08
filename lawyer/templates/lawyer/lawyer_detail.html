@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ lawyer.name }} | Lawyer Profile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #0f0c1a 0%, #1a1a2e 40%, #16213e 100%); color: #f0f0f0; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+    .glass-card { background: rgba(25, 25, 40, 0.8); backdrop-filter: blur(16px); border-radius: 28px; padding: 30px; border: 1px solid rgba(255,140,66,0.4); margin-bottom: 20px; }
+    .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; flex-wrap: wrap; gap: 15px; }
+    .logo { font-size: 1.8rem; font-weight: 800; background: linear-gradient(135deg, #fff, #ff8c42); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .profile-header { display: flex; gap: 30px; flex-wrap: wrap; margin-bottom: 30px; }
+    .lawyer-info { flex: 1; }
+    .lawyer-name { font-size: 1.8rem; font-weight: 700; color: #ff8c42; }
+    .booking-form { background: rgba(35,35,55,0.5); border-radius: 24px; padding: 25px; }
+    .form-group { margin-bottom: 20px; }
+    label { display: block; margin-bottom: 8px; color: #ffaa66; }
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      background: rgba(45,45,60,0.8);
+      border: 1px solid rgba(255,140,66,0.3);
+      border-radius: 20px;
+      color: white;
+    }
+    .btn {
+      background: linear-gradient(95deg, #ff8c42, #f57c00);
+      border: none;
+      padding: 12px 30px;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+    }
+    .info-row { margin-bottom: 15px; }
+    @media (max-width: 768px) { .profile-header { flex-direction: column; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="glass-card">
+      <div class="header">
+        <div class="logo">Nyaya<span style="color:#ff8c42;">Setu</span></div>
+        <a href="{% url 'lawyer_portal' %}" style="color:#ff8c42;">← Back to Lawyers</a>
+      </div>
+      
+      <div class="profile-header">
+        <div style="flex: 1;">
+          <div class="lawyer-name">Adv. {{ lawyer.name }}</div>
+          <div class="info-row"><i class="fas fa-briefcase"></i> {{ lawyer.get_specialization_display }}</div>
+          <div class="info-row"><i class="fas fa-calendar"></i> {{ lawyer.experience }} years experience</div>
+          <div class="info-row"><i class="fas fa-graduation-cap"></i> {{ lawyer.degree }}</div>
+          <div class="info-row"><i class="fas fa-taka-sign"></i> Consultation Fee: ৳{{ lawyer.consultation_fee }}</div>
+          <div class="info-row"><i class="fas fa-phone"></i> {{ lawyer.phone }}</div>
+          <div class="info-row"><i class="fas fa-envelope"></i> {{ lawyer.email }}</div>
+          {% if lawyer.bio %}<div class="info-row"><strong>Bio:</strong> {{ lawyer.bio }}</div>{% endif %}
+          {% if lawyer.cases_handled %}<div class="info-row"><strong>Cases Handled:</strong> {{ lawyer.cases_handled }}</div>{% endif %}
+        </div>
+      </div>
+    </div>
+    
+    <div class="glass-card">
+      <h3 style="color:#ff8c42; margin-bottom:20px;"><i class="fas fa-calendar-check"></i> Book a Consultation</h3>
+      <form method="POST" class="booking-form">
+        {% csrf_token %}
+        <div class="form-group"><label>Your Name *</label><input type="text" name="client_name" required></div>
+        <div class="form-group"><label>Your Email *</label><input type="email" name="client_email" required></div>
+        <div class="form-group"><label>Your Phone *</label><input type="tel" name="client_phone" required></div>
+        <div class="form-group"><label>Case Type *</label><input type="text" name="case_type" placeholder="e.g., Criminal, Divorce, Property Dispute" required></div>
+        <div class="form-group"><label>Case Description *</label><textarea name="case_description" rows="4" required></textarea></div>
+        <div class="form-group"><label>Preferred Date</label><input type="date" name="preferred_date"></div>
+        <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Send Booking Request</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

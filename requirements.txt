@@ -1,0 +1,18 @@
+vdjango>=5.0
+streamlit
+PyPDF2
+python-dotenv
+
+# LangChain packages - using latest compatible versions
+langchain
+langchain-core
+langchain-community
+langchain-text-splitters
+langsmith
+
+# Google GenAI integration
+langchain-google-genai
+google-generativeai
+
+# Vector store
+faiss-cpu
