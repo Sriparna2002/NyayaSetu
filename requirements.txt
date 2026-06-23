@@ -15,4 +15,4 @@ langchain-google-genai
 google-generativeai
 
 # Vector store
-faiss-cpu
+faiss-cpu 
