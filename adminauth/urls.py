@@ -21,4 +21,6 @@ urlpatterns = [
     path('api/stats/', views.get_admin_stats, name='admin_api_stats'),
     path('api/officers/', views.get_officers, name='admin_api_officers'),
     path('api/complaint/<str:complaint_id>/', views.get_complaint_detail, name='admin_complaint_detail'),
+    path('forgot-password/', views.admin_forgot_password, name='admin_forgot_password'),
+    path('reset-password/<uuid:token>/', views.admin_reset_password, name='admin_reset_password'),
 ]

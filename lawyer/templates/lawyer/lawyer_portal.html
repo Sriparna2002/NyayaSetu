@@ -122,7 +122,7 @@
           <div class="specialization"><i class="fas fa-briefcase"></i> {{ lawyer.get_specialization_display }}</div>
           <div class="experience"><i class="fas fa-calendar"></i> {{ lawyer.experience }} years experience</div>
           <div class="experience"><i class="fas fa-gavel"></i> {{ lawyer.degree }}</div>
-          <div class="fee"><i class="fas fa-taka-sign"></i> Consultation: ৳{{ lawyer.consultation_fee }}</div>
+          <div class="fee"><i class="fas fa-taka-sign"></i> Consultation: Rupees {{ lawyer.consultation_fee }}</div>
           <a href="{% url 'lawyer_detail' lawyer.id %}" class="btn-detail"><i class="fas fa-eye"></i> View Profile & Book</a>
         </div>
         {% empty %}

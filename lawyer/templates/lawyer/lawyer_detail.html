@@ -55,7 +55,7 @@
           <div class="info-row"><i class="fas fa-briefcase"></i> {{ lawyer.get_specialization_display }}</div>
           <div class="info-row"><i class="fas fa-calendar"></i> {{ lawyer.experience }} years experience</div>
           <div class="info-row"><i class="fas fa-graduation-cap"></i> {{ lawyer.degree }}</div>
-          <div class="info-row"><i class="fas fa-taka-sign"></i> Consultation Fee: ৳{{ lawyer.consultation_fee }}</div>
+          <div class="info-row"><i class="fas fa-taka-sign"></i> Consultation Fee: Rupees {{ lawyer.consultation_fee }}</div>
           <div class="info-row"><i class="fas fa-phone"></i> {{ lawyer.phone }}</div>
           <div class="info-row"><i class="fas fa-envelope"></i> {{ lawyer.email }}</div>
           {% if lawyer.bio %}<div class="info-row"><strong>Bio:</strong> {{ lawyer.bio }}</div>{% endif %}

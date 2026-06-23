@@ -2,23 +2,35 @@ Watching for file changes with StatReloader
 System check identified some issues:
 
 WARNINGS:
-?: (staticfiles.W004) The directory 'C:\Users\HP\Desktop\frontend\Legal\legal_project\static' in the STATICFILES_DIRS setting does not exist.
-lawyer.Lawyer: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
-	HINT: Configure the DEFAULT_AUTO_FIELD setting or the LawyerConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
-lawyer.LawyerBooking: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
-	HINT: Configure the DEFAULT_AUTO_FIELD setting or the LawyerConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
+?: (staticfiles.W004) The directory 'C:\Users\HP\Desktop\Nayasetu\NyayaSetu\static' in the STATICFILES_DIRS setting does not exist.
 
-System check identified 3 issues (0 silenced).
-[04/Jun/2026 10:11:17] "GET / HTTP/1.1" 200 31194
+System check identified 1 issue (0 silenced).
+[21/Jun/2026 15:37:58] "GET / HTTP/1.1" 200 31194
 Not Found: /favicon.ico
-[04/Jun/2026 10:11:20] "GET /favicon.ico HTTP/1.1" 404 2727
-[04/Jun/2026 10:11:59] "GET /auth/register/ HTTP/1.1" 200 4377
-[04/Jun/2026 10:12:01] "GET /auth/login/ HTTP/1.1" 200 3965
-[04/Jun/2026 10:12:03] "GET / HTTP/1.1" 200 31194
-[04/Jun/2026 10:12:08] "GET /admin-dashboard/login/ HTTP/1.1" 200 3849
-[04/Jun/2026 10:12:11] "GET /admin-dashboard/register/ HTTP/1.1" 200 4136
-[04/Jun/2026 10:12:14] "GET /admin-dashboard/login/ HTTP/1.1" 200 3849
-[04/Jun/2026 10:12:16] "GET / HTTP/1.1" 200 31194
-[04/Jun/2026 10:12:18] "GET /lawyer/ HTTP/1.1" 200 4844
-[04/Jun/2026 10:12:21] "GET /lawyer/create/ HTTP/1.1" 200 5930
-[04/Jun/2026 10:12:24] "GET /lawyer/ HTTP/1.1" 200 4844
+[21/Jun/2026 15:38:01] "GET /favicon.ico HTTP/1.1" 404 3083
+[21/Jun/2026 15:46:09] "GET /auth/register/ HTTP/1.1" 200 4377
+[21/Jun/2026 15:46:13] "GET /auth/login/ HTTP/1.1" 200 4092
+[21/Jun/2026 15:46:21] "POST /auth/login/ HTTP/1.1" 302 0
+[21/Jun/2026 15:46:21] "GET /auth/login/ HTTP/1.1" 200 4230
+[21/Jun/2026 15:46:36] "POST /auth/login/ HTTP/1.1" 302 0
+[21/Jun/2026 15:46:37] "GET /auth/dashboard/ HTTP/1.1" 200 28861
+[21/Jun/2026 15:46:37] "GET /auth/api/get-profile/ HTTP/1.1" 200 97
+[21/Jun/2026 15:46:37] "GET /auth/api/get-stats/ HTTP/1.1" 200 41
+[21/Jun/2026 15:47:26] "GET /auth/api/get-complaints/ HTTP/1.1" 200 892
+[21/Jun/2026 15:47:59] "GET /auth/api/get-profile/ HTTP/1.1" 200 97
+[21/Jun/2026 16:07:00] "GET /auth/logout/ HTTP/1.1" 302 0
+[21/Jun/2026 16:07:00] "GET / HTTP/1.1" 200 31194
+[21/Jun/2026 16:07:04] "GET /admin-dashboard/login/ HTTP/1.1" 200 4198
+[21/Jun/2026 16:07:14] "POST /admin-dashboard/login/ HTTP/1.1" 302 0
+[21/Jun/2026 16:07:14] "GET /admin-dashboard/dashboard/ HTTP/1.1" 200 22520
+[21/Jun/2026 16:07:14] "GET /admin-dashboard/api/officers/ HTTP/1.1" 200 268
+[21/Jun/2026 16:07:15] "GET /admin-dashboard/api/complaints/ HTTP/1.1" 200 5282
+[21/Jun/2026 16:07:15] "GET /admin-dashboard/api/stats/ HTTP/1.1" 200 213
+[21/Jun/2026 16:07:41] "GET /admin-dashboard/api/complaints/ HTTP/1.1" 200 5282
+[21/Jun/2026 16:08:57] "GET /admin-dashboard/logout/ HTTP/1.1" 302 0
+[21/Jun/2026 16:08:57] "GET /admin-dashboard/login/ HTTP/1.1" 200 4205
+[21/Jun/2026 16:09:03] "GET /admin-dashboard/logout/ HTTP/1.1" 302 0
+[21/Jun/2026 16:09:03] "GET /admin-dashboard/login/ HTTP/1.1" 200 4122
+[21/Jun/2026 16:09:05] "GET / HTTP/1.1" 200 31194
+[21/Jun/2026 16:09:07] "GET /lawyer/ HTTP/1.1" 200 5262
+[21/Jun/2026 16:11:04] "GET /lawyer/create/ HTTP/1.1" 200 5930

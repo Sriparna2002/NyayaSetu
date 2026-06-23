@@ -136,7 +136,8 @@
     .status-In\ Progress { background: rgba(255,193,7,0.2); color: #ffc107; }
     .status-Resolved { background: rgba(40,167,69,0.2); color: #28a745; }
     .status-Rejected { background: rgba(220,53,69,0.2); color: #dc3545; }
-    .priority-high { color: #ffc107; font-weight: 600; }
+    .priority-low { color: #28a745; font-weight: 600; }
+    .priority-medium { color: #ffc107; font-weight: 600; }
     .priority-urgent { color: #dc3545; font-weight: 600; }
     
     .action-btn {
@@ -402,7 +403,7 @@
               <td>${c.user}<br><small>${c.user_email}</small></td>
               <td>${c.category}</td>
               <td>${c.nearest_police_station || 'Not specified'}</td>
-              <td class="${c.priority === 'Urgent' ? 'priority-urgent' : (c.priority === 'High' ? 'priority-high' : '')}">${c.priority}</td>
+              <td class="${c.priority === 'Urgent' ? 'priority-urgent' : (c.priority === 'Medium' ? 'priority-medium' : (c.priority === 'Low' ? 'priority-low' : ''))}">${c.priority}</td>
               <td><span class="status-badge status-${c.status.replace(/ /g, '\\ ')}">${c.status}</span></td>
               <td><small>${c.date}</small></td>
               <td>
@@ -453,7 +454,7 @@
               <div style="margin-bottom: 12px;"><strong>User:</strong> ${c.user} (${c.user_email})</div>
               <div style="margin-bottom: 12px;"><strong>Category:</strong> ${c.category}</div>
               <div style="margin-bottom: 12px;"><strong>Nearest Police Station:</strong> ${c.nearest_police_station || 'Not specified'}</div>
-              <div style="margin-bottom: 12px;"><strong>Priority:</strong> <span class="${c.priority === 'Urgent' ? 'priority-urgent' : (c.priority === 'High' ? 'priority-high' : '')}">${c.priority}</span></div>
+              <div style="margin-bottom: 12px;"><strong>Priority:</strong> <span class="${c.priority === 'Urgent' ? 'priority-urgent' : (c.priority === 'Medium' ? 'priority-medium' : (c.priority === 'Low' ? 'priority-low' : ''))}">${c.priority}</span></div>
               <div style="margin-bottom: 12px;"><strong>Status:</strong> <span class="status-badge status-${c.status.replace(/ /g, '\\ ')}">${c.status}</span></div>
               <div style="margin-bottom: 12px;"><strong>Assigned To:</strong> ${c.assigned_to}</div>
               <div style="margin-bottom: 12px;"><strong>Description:</strong><br>${c.description}</div>

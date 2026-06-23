@@ -11,4 +11,6 @@ urlpatterns = [
     path('api/get-stats/', views.get_stats, name='get_stats'),
     path('api/get-profile/', views.get_user_profile, name='get_profile'),
     path('api/update-phone/', views.update_phone, name='update_phone'),
+    path('forgot-password/', views.forgot_password_view, name='forgot_password'),
+    path('reset-password/<uuid:token>/', views.reset_password_view, name='reset_password'),
 ]

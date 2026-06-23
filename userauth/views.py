@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Complaint
+from .models import Complaint, PasswordReset
 from django.http import JsonResponse
 import json
 from django.views.decorators.csrf import csrf_exempt
@@ -229,7 +229,7 @@ def admin_get_stats(request):
         status_counts[status] = Complaint.objects.filter(status=status).count()
     
     priority_counts = {}
-    for priority in ['Normal', 'High', 'Urgent']:
+    for priority in ['Low', 'Medium', 'Urgent']:
         priority_counts[priority] = Complaint.objects.filter(priority=priority).count()
     
     return JsonResponse({
@@ -296,3 +296,54 @@ def admin_get_officers(request):
     officers = User.objects.filter(is_staff=True) | User.objects.filter(is_superuser=True)
     officers_list = [{'username': o.username, 'email': o.email} for o in officers]
     return JsonResponse({'officers': officers_list})
+
+
+# ==================== PASSWORD RESET VIEWS (Citizen) ====================
+
+def forgot_password_view(request):
+    """Citizen: Generate a one-time password reset link and show it on screen."""
+    reset_link = None
+    if request.method == 'POST':
+        email = request.POST.get('email', '').strip()
+        try:
+            user = User.objects.get(email=email)
+            # Invalidate previous unused tokens
+            PasswordReset.objects.filter(user=user, is_used=False).update(is_used=True)
+            # Create a fresh token
+            reset_obj = PasswordReset.objects.create(user=user)
+            token = reset_obj.token
+            reset_link = request.build_absolute_uri(f'/auth/reset-password/{token}/')
+        except User.DoesNotExist:
+            messages.error(request, 'No account found with that email address.')
+    return render(request, 'auth/forgot_password.html', {'reset_link': reset_link})
+
+
+def reset_password_view(request, token):
+    """Citizen: Validate the token and allow the user to set a new password."""
+    try:
+        reset_obj = PasswordReset.objects.get(token=token, is_used=False)
+    except PasswordReset.DoesNotExist:
+        messages.error(request, 'This password reset link is invalid or has already been used.')
+        return redirect('login')
+
+    if reset_obj.is_expired():
+        messages.error(request, 'This password reset link has expired. Please request a new one.')
+        return redirect('forgot_password')
+
+    if request.method == 'POST':
+        new_password = request.POST.get('new_password', '')
+        confirm_password = request.POST.get('confirm_password', '')
+        if len(new_password) < 6:
+            messages.error(request, 'Password must be at least 6 characters.')
+        elif new_password != confirm_password:
+            messages.error(request, 'Passwords do not match.')
+        else:
+            user = reset_obj.user
+            user.set_password(new_password)
+            user.save()
+            reset_obj.is_used = True
+            reset_obj.save()
+            messages.success(request, 'Password reset successful! Please log in with your new password.')
+            return redirect('login')
+
+    return render(request, 'auth/reset_password.html', {'token': token})
