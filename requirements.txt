@@ -1,4 +1,4 @@
-vdjango>=5.0
+django>=5.0
 streamlit
 PyPDF2
 python-dotenv
